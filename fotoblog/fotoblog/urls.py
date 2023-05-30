@@ -20,9 +20,7 @@ from django.contrib.auth.views import (
 from django.urls import path
 
 import blog.views
-
-# seulement qd use class or function views :
-# import authentication.views
+import authentication.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -46,5 +44,7 @@ urlpatterns = [
         template_name='authentication/password_change_done.html'),
          name='password_change_done'
          ),
+    path('signup/', authentication.views.signup_page, name='signup'),
     path('home/', blog.views.home, name='home'),
+    path('photo/upload/', blog.views.photo_upload, name='photo_upload'),
 ]

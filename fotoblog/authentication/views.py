@@ -1,7 +1,28 @@
+from django.conf import settings
+from django.contrib.auth import login
+from django.shortcuts import redirect, render
+
+from . import forms
+
+""" if use func or class for Views :
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.views.generic import View
 from . import forms
+"""
+
+
+def signup_page(request):
+    form = forms.SignupForm()
+    if request.method == 'POST':
+        form = forms.SignupForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect(settings.LOGIN_REDIRECT_URL)
+    return render(request,
+                  'authentication/signup.html',
+                  context={'form': form})
 
 
 """ form class :
@@ -32,11 +53,11 @@ class LoginPageView(View):
                       context={'form': form, 'message': message})
 """
 
-
+""" si utilise func for logout :
 def logout_user(request):
     logout(request)
     return redirect('login')
-
+"""
 
 """ form function :
 def login_page(request):
