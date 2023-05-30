@@ -4,3 +4,4 @@ Pipfile.lock
 pycache/
 db.sqlite3
 .idea
+fotoblog/media/
