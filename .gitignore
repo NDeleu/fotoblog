@@ -5,3 +5,5 @@ pycache/
 db.sqlite3
 .idea
 fotoblog/media/
+__pycache__
+media
